@@ -6,7 +6,7 @@ import { GameNFT, GameNFT__factory } from "../typechain-types";
 import { Spinner } from "../utils/spinner";
 
 task("balance-of", "Gets the balance of GameNFTs for provided address")
-  .addParam(`gameNFT`, `The address of the GameNFT smart contract`)
+  .addParam(`gameNft`, `The address of the GameNFT smart contract`)
   .addParam(
     `blockchain`,
     `The blockchain where the GameNFT smart contract was deployed`

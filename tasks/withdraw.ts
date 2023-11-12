@@ -17,7 +17,7 @@ task(
     `from`,
     `The address of the Withdraw.sol smart contract from which funds should be withdrawn`
   )
-  .addParam(`beneficiary`, `The address to withdraw to`)
+  .addOptionalParam(`beneficiary`, `The address to withdraw to`)
   .addOptionalParam(`tokenAddress`, `The address of a token to withdraw`)
   .setAction(async (taskArguments: TaskArguments) => {
     const { blockchain, from, beneficiary, tokenAddress } = taskArguments;
@@ -28,6 +28,7 @@ task(
     const provider = new providers.JsonRpcProvider(rpcProviderUrl);
     const wallet = Wallet.fromMnemonic(privateKey); // new Wallet(privateKey);
     const signer = wallet.connect(provider);
+    const receiver = beneficiary || wallet.address;
 
     const withdraw: Withdraw = Withdraw__factory.connect(from, signer);
 
@@ -35,14 +36,11 @@ task(
 
     if (tokenAddress) {
       console.log(
-        `ℹ️  Attempting to withdraw ${tokenAddress} tokens from ${from} to ${beneficiary}`
+        `ℹ️  Attempting to withdraw ${tokenAddress} tokens from ${from} to ${receiver}`
       );
       spinner.start();
 
-      const withdrawalTx = await withdraw.withdrawToken(
-        beneficiary,
-        tokenAddress
-      );
+      const withdrawalTx = await withdraw.withdrawToken(receiver, tokenAddress);
       await withdrawalTx.wait();
 
       spinner.stop();
@@ -51,11 +49,11 @@ task(
       );
     } else {
       console.log(
-        `ℹ️  Attempting to withdraw coins from ${from} to ${beneficiary}`
+        `ℹ️  Attempting to withdraw coins from ${from} to ${receiver}`
       );
       spinner.start();
 
-      const withdrawalTx = await withdraw.withdraw(beneficiary);
+      const withdrawalTx = await withdraw.withdraw(receiver);
       await withdrawalTx.wait();
 
       spinner.stop();

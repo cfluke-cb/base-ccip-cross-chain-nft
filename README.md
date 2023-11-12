@@ -6,6 +6,8 @@
 
 This project demonstrates how to mint an NFT on one blockchain from another blockchain using Chainlink CCIP.
 
+This project was started from [CCIP's example](https://github.com/smartcontractkit/ccip-cross-chain-nft)
+
 ## Prerequisites
 
 - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
