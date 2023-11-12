@@ -1,0 +1,14 @@
+{
+  "name": "ccip-cross-chain-nft",
+  "devDependencies": {
+    "@chainlink/contracts": "^0.8.0",
+    "@chainlink/contracts-ccip": "^0.7.6",
+    "@nomicfoundation/hardhat-toolbox": "^2.0.1",
+    "ethers": "^5.7.2",
+    "hardhat": "^2.19.0"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5",
+    "dotenv": "^16.3.1"
+  }
+}
