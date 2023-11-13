@@ -145,13 +145,12 @@ npx hardhat fill-sender
 --sender-address <sourceMinterAddress>
 --blockchain <blockchain>
 --amount <amountToSend>
---pay-fees-in <Native>
 ```
 
 For example, if you want to fund it with 0.01 Sepolia ETH, run:
 
 ```shell
-npx hardhat fill-sender --sender-address <SOURCE_MINTER_ADDRESS> --blockchain ethereumSepolia --amount 10000000000000000 --pay-fees-in Native
+npx hardhat fill-sender --sender-address <SOURCE_MINTER_ADDRESS> --blockchain ethereumSepolia --amount 10000000000000000
 ```
 
 ### Minting
@@ -164,13 +163,12 @@ npx hardhat cross-chain-mint
 --source-blockchain <sourceBlockchain>
 --destination-blockchain <destinationBlockchain>
 --destination-minter <destinationMinterAddress>
---pay-fees-in <Native | LINK>
 ```
 
 For example, if you want to mint NFTs on Avalanche Fuji by sending requests from Ethereum Sepolia, run:
 
 ```shell
-npx hardhat cross-chain-mint --source-minter <SOURCE_MINTER_ADDRESS> --source-blockchain ethereumSepolia --destination-blockchain avalancheFuji --destination-minter <DESTNATION_MINTER_ADDRESS> --pay-fees-in Native
+npx hardhat cross-chain-mint --source-minter <SOURCE_MINTER_ADDRESS> --source-blockchain ethereumSepolia --destination-blockchain avalancheFuji --destination-minter <DESTNATION_MINTER_ADDRESS>
 ```
 
 5. Once the CCIP message is finalized on the destination blockchain, you can query the GameNFTs balance of your account, using the `balance-of` task:

@@ -21,9 +21,6 @@ task(`deploy-source-minter`, `Deploys SourceMinter.sol smart contract`)
       const routerAddress = taskArguments.router
         ? taskArguments.router
         : getRouterConfig(hre.network.name).address;
-      const linkAddress = taskArguments.link
-        ? taskArguments.link
-        : LINK_ADDRESSES[hre.network.name];
 
       const privateKey = getPrivateKey();
       const rpcProviderUrl = getProviderRpcUrl(hre.network.name);
@@ -58,7 +55,7 @@ task(`deploy-source-minter`, `Deploys SourceMinter.sol smart contract`)
       const token = tokenFactory.attach(tokenAddr);
 */
       console.log(
-        `ℹ️  Attempting to deploy SourceMinter smart contract on the ${hre.network.name} blockchain using ${deployer.address} address, with the Router address ${routerAddress} and LINK address ${linkAddress} provided as constructor arguments`
+        `ℹ️  Attempting to deploy SourceMinter smart contract on the ${hre.network.name} blockchain using ${deployer.address} address, with the Router address ${routerAddress} provided as constructor arguments`
       );
       spinner.start();
       const sourceMinterFactory: SourceMinter__factory =
